@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Chat Brasil</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="container">
+        <nav id="navbar">
+            <h1 id="text-navbar">
+                WebChat Brasil
+            </h1>
+            <button id="button-navbar">
+                <i class="fas fa-ellipsis-v"></i>
+            </button>
+        </nav>
+        <main id="view-messages">
+    
+        </main>
+        <footer>
+            <div id="input-menu-local">
+                <input id="input-menu" type="text">
+            </div>
+            <button id="button-menu">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </footer>
+    
+        <section id="context-menu" >
+            <div id="online"> 
+                
+            </div> 
+        </section>
+    </div>
+
+    <div id="container-login">
+        <section id="login-menu">
+            <p id="text-login">
+                Identifique-se no WebChat:
+            </p>
+            <p id="name-login">
+                NOME
+            </p>
+            <input placeholder="Digite seu Nome" id="input-login" type="text">
+            <button id="button-login" >
+                Continuar
+            </button>
+            <button id="info-login">
+                Saiba Mais
+            </button>
+        </section>
+    </div>
+    <script src="./sever.js"></script>
+    <script src="./styles/index.js"></script>
+    <script src="./login.js"></script>
+    <script src="./crements.js"></script>
+</body>
+</html>
