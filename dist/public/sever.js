@@ -1,1 +1,1 @@
-const sio = io("http://localhost:3000");
+const sio = io(document.URL);

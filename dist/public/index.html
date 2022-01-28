@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Chat Brasil</title>
     <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/messages.css">
     <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -19,20 +20,17 @@
             </button>
         </nav>
         <main id="view-messages">
-    
         </main>
         <footer>
             <div id="input-menu-local">
-                <input id="input-menu" type="text">
+                <input placeholder="Sua messagem..." id="input-menu" type="text">
             </div>
             <button id="button-menu">
                 <i class="fas fa-paper-plane"></i>
             </button>
         </footer>
-    
         <section id="context-menu" >
             <div id="online"> 
-                
             </div> 
         </section>
     </div>
@@ -58,5 +56,6 @@
     <script src="./styles/index.js"></script>
     <script src="./login.js"></script>
     <script src="./crements.js"></script>
+    <script src="./send.js"></script>
 </body>
 </html>

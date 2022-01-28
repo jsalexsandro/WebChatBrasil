@@ -48,7 +48,7 @@ body {
 
 
 #view-messages {
-    
+    overflow: auto;
     background-color: #f4feff;
     top: 60px;
     position: absolute;
@@ -64,7 +64,8 @@ footer {
     background-color: #027787;
     top: calc(100% - 70px);
     width: 100%;
-    height: 70px;
+    border-top: 2px solid #9e9e9e;
+    height: 68px;
 }
 
 #input-menu-local {
@@ -82,7 +83,7 @@ footer {
     text-indent: 2px;
     font-size: 22px;
     color: #016a77;
-    font-weight: bold;
+    /* font-weight: bold; */
     font-family: monospace;
     background-color: transparent;
     width: calc(100% - 3vw);
@@ -91,6 +92,12 @@ footer {
     border-radius: 30px;
     border: 0;
     outline: none; 
+}
+
+::placeholder{
+    font-family: monospace;
+    font-style: italic;
+    color: #016a77;
 }
 
 #button-menu {
@@ -126,7 +133,7 @@ footer {
     opacity: 0;
     right: 12px;
     box-shadow: 0px 0px 20px #0000003f;
-    background-color: #027787;
+    background-color: #004d57;
     transition: 0.1s;
     /* align-items: center;
     justify-content: center; */
@@ -143,7 +150,7 @@ footer {
     text-transform: uppercase;
     height: 40px;
     transition: 0.4s;
-    background-color:#016a77;
+    background-color:#002327;
     /* font-size: 30px; */
 }
 
@@ -258,5 +265,4 @@ p#name-login{
 #info-login:hover{
     cursor: pointer;
     background-color: #00181c;
-
 }
