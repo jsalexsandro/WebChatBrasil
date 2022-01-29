@@ -19,6 +19,6 @@ app.engine("html", ejs_1.default.renderFile);
 app.set("view engine", "html");
 app.use(routes_1.default);
 (0, backend_1.BackEnd)(io);
-sever.listen(3000, () => {
-    console.log("The Sever listen: http://localhost:3000");
+sever.listen(8080, () => {
+    console.log("The Sever listen! ");
 });
