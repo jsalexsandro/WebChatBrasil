@@ -1,5 +1,4 @@
-let connectionCount = 0
-
+import {readFileSync,writeFileSync} from "fs"
 
 type ObjMessage =  {
     author:string,
@@ -8,14 +7,21 @@ type ObjMessage =  {
     key:string
 }
 
-var Messages = Array<ObjMessage>(
-    {
-        author:"Developer",
-        message:"Bem Vindo!",
-        date:"",
-        key:"dev"
-    }
-)
+let connectionCount = 0
+
+const getMessages = function(){
+    var _code_ = JSON.parse(readFileSync("./msg.json","utf-8"))
+    console.log(_code_)
+    return _code_["msg"]
+}   
+
+const writeMessages = function(message:ObjMessage){
+    var affMsg:Array<any> = getMessages()
+    affMsg.push(message);
+    writeFileSync("./msg.json",JSON.stringify({
+        msg:affMsg
+    }),"utf8")
+}
 
 export function BackEnd(io?:any){
     io.on("connection",(socket:any) => {
@@ -29,7 +35,7 @@ export function BackEnd(io?:any){
                 isConnected = true
             }
             io.emit("crement",`${connectionCount}`)
-            socket.emit("previus_message",Messages)
+            socket.emit("previus_message",getMessages())
         })
 
         socket.on("disconnect",(a?:any) => {
@@ -44,7 +50,7 @@ export function BackEnd(io?:any){
         })
 
         socket.on("new_message",(object:ObjMessage) => {
-            Messages.push(object)
+            writeMessages(object)
             io.emit("set_message",object)
             console.log("Msg enviada")
         })
