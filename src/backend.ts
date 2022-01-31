@@ -11,7 +11,6 @@ let connectionCount = 0
 
 const getMessages = function(){
     var _code_ = JSON.parse(readFileSync("./msg.json","utf-8"))
-    console.log(_code_)
     return _code_["msg"]
 }   
 
@@ -20,7 +19,7 @@ const writeMessages = function(message:ObjMessage){
     affMsg.push(message);
     writeFileSync("./msg.json",JSON.stringify({
         msg:affMsg
-    }),"utf8")
+    },null,4),"utf8")
 }
 
 export function BackEnd(io?:any){
@@ -52,7 +51,6 @@ export function BackEnd(io?:any){
         socket.on("new_message",(object:ObjMessage) => {
             writeMessages(object)
             io.emit("set_message",object)
-            console.log("Msg enviada")
         })
 
     })  

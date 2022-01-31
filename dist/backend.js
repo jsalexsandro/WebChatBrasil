@@ -5,7 +5,6 @@ const fs_1 = require("fs");
 let connectionCount = 0;
 const getMessages = function () {
     var _code_ = JSON.parse((0, fs_1.readFileSync)("./msg.json", "utf-8"));
-    console.log(_code_);
     return _code_["msg"];
 };
 const writeMessages = function (message) {
@@ -13,7 +12,7 @@ const writeMessages = function (message) {
     affMsg.push(message);
     (0, fs_1.writeFileSync)("./msg.json", JSON.stringify({
         msg: affMsg
-    }), "utf8");
+    }, null, 4), "utf8");
 };
 function BackEnd(io) {
     io.on("connection", (socket) => {
@@ -42,7 +41,6 @@ function BackEnd(io) {
         socket.on("new_message", (object) => {
             writeMessages(object);
             io.emit("set_message", object);
-            console.log("Msg enviada");
         });
     });
 }

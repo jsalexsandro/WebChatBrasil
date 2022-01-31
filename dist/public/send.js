@@ -30,7 +30,8 @@ button.onclick = function(){
         author:author,  
         message:"",
         date:hours,
-        key:key
+        key:key,
+        id:String(getRandomInt(9999999999,9999999999999999999))
     }    
 
     const text = String(_input.value).trim()

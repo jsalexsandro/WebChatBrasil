@@ -31,12 +31,12 @@ const context = {
 
 
 input.addEventListener("focus",function(){
-    inputArea.style.border = "1px solid #044f59"
     context.remove()
+    inputArea.style.backgroundColor = "#004d57"
 })
 input.addEventListener("focusout",function(){   
-    inputArea.style.border = "0px solid #044f59"
     context.remove()
+    inputArea.style.backgroundColor = "#027787"
 
 })
 
