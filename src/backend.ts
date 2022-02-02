@@ -4,21 +4,37 @@ type ObjMessage =  {
     author:string,
     message:string,
     date:string,
-    key:string
+    key:string,
+    id:string
 }
 
 let connectionCount = 0
 
-const getMessages = function(){
+const getMessages = function():Array<any>{
     var _code_ = JSON.parse(readFileSync("./msg.json","utf-8"))
     return _code_["msg"]
 }   
 
 const writeMessages = function(message:ObjMessage){
-    var affMsg:Array<any> = getMessages()
+    var affMsg = getMessages()
     affMsg.push(message);
     writeFileSync("./msg.json",JSON.stringify({
         msg:affMsg
+    },null,4),"utf8")
+}
+
+
+
+function removeMessage(id:any){
+    var messages = getMessages()
+    var newMessages = []
+    for (var c in messages){
+        if (messages[c].id != id){
+            newMessages.push(messages[c])
+        }
+    }
+    writeFileSync("./msg.json",JSON.stringify({
+        msg:newMessages
     },null,4),"utf8")
 }
 
@@ -46,6 +62,11 @@ export function BackEnd(io?:any){
                 io.emit("crement",`${connectionCount}`)
                 isConnected = false
             }
+        })
+
+        socket.on("removeMsg",(id:any) => {
+            removeMessage(id)
+            io.emit("frontEndDeleteMessage",id)
         })
 
         socket.on("new_message",(object:ObjMessage) => {

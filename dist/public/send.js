@@ -24,7 +24,18 @@ button.onclick = function(){
         reload()
     }
 
-    var hours = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
+    function normalDate(calback){
+        var _day = ""
+        if (calback > 9){
+            _day = calback
+        } else {
+            _day = "0"+calback
+        }
+        return _day
+    }
+
+
+    var hours = `${normalDate(date.getDate())}/${normalDate(date.getMonth()+1)}/${date.getFullYear()} ${date.getHours()}:${normalDate(date.getMinutes())}`
 
     var object = {
         author:author,  
@@ -43,44 +54,57 @@ button.onclick = function(){
 }
 
 
-function RenderMessage(message,author,date,keyReceved){
+function RenderMessage(message,author,date,keyReceved,id){
     var key = localStorage.getItem("key?")
     var code = ""
     if (key == keyReceved){
-        code = `
-<div class="message m1">
-    <div class="local m2">
-        <div class="user ">
-            ${author}(Você)
-        </div>
-        <div class="date">
-            ${date}
-        </div>
-    </div>
-    <p class="content m3">
-        <span>
-            ${message}
-        </span>
-    </p>
-</div>
-`
-    } else {
-        code = `
-<div class="message">
-    <div class="local">
-        <div class="user ">
+        code += `
+<section id="${id}" class="message m1">
+    <div class="message-info m2">
+        <p id="author">
             ${author}
-        </div>
-        <div class="date">
-            ${date}
-        </div>
+        </p>
+        <section id="info"> 
+            <p id="date">
+                ${date}
+            </p>
+            <button onclick="Delete('${id}')" id="delete">
+                <i class="far fa-trash-alt delete-icon"></i>
+            </button>
+        </section>
+            
     </div>
-    <p class="content">
-        <span>
-            ${message}
-        </span>
-    </p>
-</div>
+    <article class="value m3">
+        <div id="message-value">   
+            <span id="value">
+                ${message}
+            </span>
+        </div>
+    </article>
+</section>
+        `
+    } else {
+    code += `
+<section id="${id}" class="message">
+    <div class="message-info">
+        <p id="author">
+            ${author}
+        </p>
+        <section id="info"> 
+            <p id="date">
+                ${date}
+            </p>
+        </section>
+            
+    </div>
+    <article class="value">
+        <div id="message-value">   
+            <span id="value">
+                ${message}
+            </span>
+        </div>
+    </article>
+</section>
         `
     }
 
@@ -93,7 +117,9 @@ sio.on("previus_message",(list) => {
             list[object].message,
             list[object].author,
             list[object].date,
-            list[object].key
+            list[object].key,
+            list[object].id,
+
         )
     }
     document.querySelector("#view-messages").scroll(0,100000000)
@@ -104,7 +130,8 @@ sio.on("set_message",(object) => {
         object.message,
         object.author,
         object.date,
-        object.key
+        object.key,
+        object.id
     )
     document.querySelector("#view-messages").scroll(0,100000000)
 })

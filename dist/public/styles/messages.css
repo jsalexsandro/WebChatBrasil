@@ -1,69 +1,88 @@
 .message {
-    margin-left:5px;
     margin-top: 10px;
-    margin-bottom: 10px;
-    border-radius: 45px;
-    /* width: calc(max(40vw,350px) + 1rem); */
-    max-width: 350px;
-    min-width: 120px;
+    margin-left: 10px;
     width: auto;
+    max-width: 350px;
+    height: auto;
 }
 
-.local {
-    padding-top:5px;
-    padding-bottom:5px;
+.message-info {
     color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    background-color: #005463;
+    font-size: 16px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    /* border-radius: 45px; */
+    padding-top:5px;
+    padding-bottom:5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #004750;
 }
 
-.user {
-    margin-left: 10px;
+#author {
+    margin-left: 5px;
+    font-family: monospace;
     text-transform: uppercase;
-    font-family: monospace;
-    font-size: 16px;
 }
 
-.date {
-    margin-right: 10px;
-    font-family: monospace;
-    font-size: 16px;
+#info {
+    display:  flex;
 }
 
-.content {
-    color: #ffffff;
-    font-size: 22px;
+#date {
     font-family: monospace;
+    margin-right: 5px;
+}
+
+.value {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    background-color: rgb(0, 167, 189);
-    padding-top:14px;
-    padding-bottom:14px;
+    background-color: #006674;
 }
 
-/* .content p, */
-.content span {
-    margin-left: 12px;
-    display: flex;
-}
-
-.m1 {
-    margin-left:20px;
-}
-
-.m2 {
-    background-color: #001c21;
-
+#message-value {
+    margin-left: 5px;
+    width: auto;
+    max-width: 340px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    word-wrap: break-word;
+    text-align: left;
+    font-size: 18px;
+    color: #fff;
+    font-family: monospace;
     
 }
 
-.m3 {
-    background-color: rgb(2, 119, 135);
+#delete {
+    background-color: transparent;
+    border: 0;
+    color: #fff;
+    /* margin-top: -100%; */
+    margin-right: 5px;
+    margin-left: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1px;
+    transition: 0.2s;
+}
 
+#delete:hover {
+    background-color: #008291;
+    
+}
+
+.m1 {
+    margin-left: 20px;
+}
+.m2 {
+    background-color: #002327;
+}
+
+.m3 {
+    background-color: #004d57;
 }

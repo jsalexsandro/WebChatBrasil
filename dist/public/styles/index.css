@@ -4,6 +4,11 @@
     margin: 0;
 }
 
+
+button {
+    cursor: pointer;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -96,7 +101,7 @@ footer {
 
 
 ::selection{
-    background-color: #004e5c;
+    background-color: #00d9ff;
 }
 
 ::placeholder{
@@ -275,7 +280,6 @@ p#name-login{
 }
 
 #button-login:hover {
-    cursor: pointer;
     background-color: #f8f5f5;
 }
 
